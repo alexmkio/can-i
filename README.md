@@ -1,40 +1,70 @@
-# Can I go look at a tree?
+# Getting Started with Create React App
 
-Can I go look at a tree? was a Mod 3 solo project in the Front End program at the [Turing School of Software and Design](https://turing.io/). The assignment was to build out a multi-page application using [React](https://reactjs.org/), [Router](https://reactrouter.com/), [Cypress](https://www.cypress.io/) and [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html) to create a product which helps a niche audience solve a unique problem.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The project spec can be found [here](https://frontend.turing.edu/projects/module-3/niche-audience.html).
+## Available Scripts
 
-The project is deployed [here]().
+In the project directory, you can run:
 
-## Install
+### `npm start`
 
-1. Clone down this repository `git clone https://github.com/alexmkio/can-i`
-2. CD into your local clone `cd can-i`
-3. Install project dependencies `npm install`
-4. Run `npm start`
-5. Open `http://localhost:3000/` in your preferred browser
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Features
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-![Gif of the app home and movie details pages]()
-* Gif of the app home and movie details pages
+### `npm test`
 
-![Gif of fetch error handling]()
-* Gif of fetch error handling
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-![Gif showing responsiveness of the app]()
-* Gif showing responsiveness of the app from the most popular desktop resolution (1920x1080) to mobile layout in 428x926 (iPhone 12 Pro Max)
+### `npm run build`
 
-## Contributors
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-This application was built by [Alex Kio](https://github.com/alexmkio/); a Front End Engineering, Mod 3 student at the [Turing School of Software and Design](https://turing.io/).
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Technologies Used
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-This application was built using the [React](https://reactjs.org/) javascript framework. [Router](https://reactrouter.com/) was used for multi-page functionality. [Cypress](https://www.cypress.io/) and [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html) were used to test user stories and data typing. GitHub and Git were used for version control and collaboration. HTTP Request is being used to Get inside of an async await function.
+### `npm run eject`
 
-## Learning Goals
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## The Evolution of the Project
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Reflections
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
