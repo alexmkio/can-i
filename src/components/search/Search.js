@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 export const Search = ({ getForecast }) => {
-  const [duration, setDuration] = useState(1);
   const [minTemp, setMinTemp] = useState(50);
   const [maxTemp, setMaxTemp] = useState(90);
   const [wind, setWindSpeed] = useState(10);
@@ -11,10 +10,9 @@ export const Search = ({ getForecast }) => {
     event.preventDefault()
 
     let thresholds = {
-      duration: duration,
       temperature: { minTemp: minTemp, maxTemp: maxTemp },
       windSpeed: wind,
-      probabilityOfPercip: precipProbability
+      probabilityOfPrecip: precipProbability
     }
     
     getForecast(thresholds)
@@ -22,17 +20,6 @@ export const Search = ({ getForecast }) => {
 
   return (
     <form>
-      <label>
-          Duration:
-        <select value={duration} onChange={event => setDuration(Number(event.target.value))}>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={4}>4</option>
-          <option value={6}>6</option>
-          <option value={8}>8</option>
-        </select>
-      </label>
-
       <label>
           Min Temperature:
         <select value={minTemp} onChange={event => setMinTemp(Number(event.target.value))}>
