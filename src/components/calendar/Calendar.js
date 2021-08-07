@@ -1,4 +1,5 @@
 import { HourCard } from "../hourCard/HourCard"
+import './Calendar.css';
 
 export const Calendar = ({ calendar, addToCalendar }) => {
   let hourCards = calendar.map(hour => {
@@ -12,10 +13,14 @@ export const Calendar = ({ calendar, addToCalendar }) => {
   })
 
   return (
-    <>
-      <section>
+    <section className='poss'>
+      <section className='possBlurb'>
+        <h2>Your calendar</h2>
+        <p>Click on an hour to add or delete it from your calendar</p>
+      </section>
+      <section className='cards'>
         {hourCards}
       </section>
-    </>
+    </section>
   )
 };

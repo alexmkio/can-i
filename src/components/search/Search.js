@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Search.css';
 
 export const Search = ({ getForecast }) => {
   const [minTemp, setMinTemp] = useState(50);
@@ -20,8 +21,10 @@ export const Search = ({ getForecast }) => {
 
   return (
     <form>
+      <h2>Select your weather thresholds and find out if you can go outside</h2>
+      
       <label>
-          Min Temperature:
+          Min Temperature: 
         <select value={minTemp} onChange={event => setMinTemp(Number(event.target.value))}>
           <option value={40}>40</option>
           <option value={50}>50</option>
@@ -30,7 +33,7 @@ export const Search = ({ getForecast }) => {
       </label>
 
       <label>
-          Max Temperature:
+          Max Temperature: 
         <select value={maxTemp} onChange={event => setMaxTemp(Number(event.target.value))}>
           <option value={80}>80</option>
           <option value={90}>90</option>
@@ -39,7 +42,7 @@ export const Search = ({ getForecast }) => {
       </label>
 
       <label>
-          Wind Speed:
+          Wind Speed: 
         <select value={wind} onChange={event => setWindSpeed(Number(event.target.value))}>
           <option value={5}>5</option>
           <option value={10}>10</option>
@@ -49,7 +52,7 @@ export const Search = ({ getForecast }) => {
       </label>
 
       <label>
-          Probability of Precipitation:
+          Probability of Precipitation: 
         <select value={precipProbability} onChange={event => setProbability(Number(event.target.value))}>
           <option value={30}>30</option>
           <option value={50}>50</option>

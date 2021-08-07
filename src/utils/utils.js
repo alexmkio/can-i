@@ -32,9 +32,9 @@ export const craftNotice = (suitableHours, timezone) => {
   })
 
   if (incremented) {
-    return `You can go outside for ${incremented} hours!`
+    return { nice: true, hours: incremented }
   } else {
-    return `You can't go outside for ${nextOpportunity} hours`
+    return { nice: false, hours: nextOpportunity }
   }
 };
 

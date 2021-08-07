@@ -15,7 +15,7 @@ export const App = () => {
   const [forecast, setForecast] = useState([]);
   const [errorCode, setErrorCode] = useState('');
   const [suitableHours, setSuitableHours] = useState([]);
-  const [notice, setNotice] = useState('');
+  const [notice, setNotice] = useState({});
   const [calendar, setCalendar] = useState([]);
   const history = useHistory();
 

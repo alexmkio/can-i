@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 2;
+}
+
+select, button {
+  color: black;
+  border-radius: 0.2vw;
+}
+
+button {
+  padding: 0.3vw;
+  width: fit-content;
+}
