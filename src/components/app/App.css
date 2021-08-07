@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+html {
+  min-height: 100vh;
+  background: url('../../assets/nice.jpeg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 10vh;
+}
+
+h1 {
+  color: white;
+}
+
+main {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1vw;
+}

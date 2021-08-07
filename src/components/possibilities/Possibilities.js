@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { HourCard } from "../hourCard/HourCard"
+import './Possibilities.css';
 
 export const Possibilities = ({ suitableHours, addToCalendar }) => {
   let hourCards = suitableHours.map(suitableHour => {
@@ -13,13 +14,15 @@ export const Possibilities = ({ suitableHours, addToCalendar }) => {
   })
 
   return (
-    <>
-      <section>
-        <Link to='/calendar'><h2>Click to see your calendar</h2></Link>
+    <section className='poss'>
+      <section className='possBlurb'>
+        <h2>Suitable hours to be outside</h2>
+        <p>Click on an hour to add or delete it from your calendar</p>
+        <Link to='/calendar'>Your calendar</Link>
       </section>
-      <section>
+      <section className='cards'>
         {hourCards}
       </section>
-    </>
+    </section>
   )
 };
