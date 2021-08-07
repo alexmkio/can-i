@@ -57,9 +57,7 @@ export const Search = ({ getForecast }) => {
         </select>
       </label>
 
-      <button onClick={event => onSubmitSearch(event)}>
-        Submit
-      </button>
+      <button onClick={event => onSubmitSearch(event)}>Submit</button>
     </form>
   )
 };
