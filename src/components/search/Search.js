@@ -75,5 +75,5 @@ export const Search = ({ getForecast }) => {
 };
 
 Search.propTypes = {
-  getForecast: PropTypes.func
+  getForecast: PropTypes.func.isRequired
 };

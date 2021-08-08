@@ -23,5 +23,5 @@ export const Error = ({ errorCode, clearSelected }) => {
 
 Error.propTypes = {
   errorCode: PropTypes.string.isRequired,
-  clearSelected: PropTypes.func
+  clearSelected: PropTypes.func.isRequired
 };

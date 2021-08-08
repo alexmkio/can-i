@@ -21,5 +21,5 @@ export const Results = ({ notice }) => {
 };
 
 Results.propTypes = {
-  notice: PropTypes.object
+  notice: PropTypes.object.isRequired
 };

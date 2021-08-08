@@ -27,6 +27,6 @@ export const Calendar = ({ calendar, addToCalendar }) => {
 };
 
 Calendar.propTypes = {
-  calendar: PropTypes.arrayOf(PropTypes.object),
-  addToCalendar: PropTypes.func
+  calendar: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addToCalendar: PropTypes.func.isRequired
 };

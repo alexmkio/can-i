@@ -29,6 +29,6 @@ export const HourCard = ({ hour, addToCalendar }) => {
 };
 
 HourCard.propTypes = {
-  hour: PropTypes.object,
-  addToCalendar: PropTypes.func
+  hour: PropTypes.object.isRequired,
+  addToCalendar: PropTypes.func.isRequired
 };

@@ -29,6 +29,6 @@ export const Possibilities = ({ suitableHours, addToCalendar }) => {
 };
 
 Possibilities.propTypes = {
-  suitableHours: PropTypes.arrayOf(PropTypes.object),
-  addToCalendar: PropTypes.func
+  suitableHours: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addToCalendar: PropTypes.func.isRequired
 };
