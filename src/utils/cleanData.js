@@ -7,29 +7,32 @@ export const cleanData = (forecast) => {
     let matchingWindObj = windObjects.find(currentWindObj => {
       if (currentWindObj.month === currentTempObj.month && 
         currentWindObj.day === currentTempObj.day && 
-        currentWindObj.hour === currentTempObj.hour) {
-          return currentWindObj
+        currentWindObj.hour === currentTempObj.hour
+      ) {
+        return currentWindObj
       }
     })
     let matchingPreciptObj = preciptObjects.find(currentPreciptObj => {
       if (currentPreciptObj.month === currentTempObj.month && 
         currentPreciptObj.day === currentTempObj.day && 
-        currentPreciptObj.hour === currentTempObj.hour) {
-          return currentPreciptObj
-        }
+        currentPreciptObj.hour === currentTempObj.hour
+      ) {
+        return currentPreciptObj
+      }
     })
     if (matchingWindObj) {
       currentTempObj.windSpeed = matchingWindObj.windSpeed
     }
     if (matchingPreciptObj) {
-      currentTempObj.probabilityOfPrecipitation = matchingPreciptObj.probabilityOfPrecipitation
+      currentTempObj.probabilityOfPrecipitation = matchingPreciptObj.precipProb
     }
     return currentTempObj
   })
 };
 
 const getTemperature = (forecast) => {
-  return forecast.properties.temperature.values.reduce((newArray, currentValueObject) => {
+  let tempValues = forecast.properties.temperature.values
+  return tempValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
     let dateArray = fullArray[0].split('-')
     let month = Number(dateArray[1])
@@ -58,7 +61,8 @@ const getTemperature = (forecast) => {
 }
 
 const getWindSpeed = (forecast) => {
-  return forecast.properties.windSpeed.values.reduce((newArray, currentValueObject) => {
+  let windValues = forecast.properties.windSpeed.values
+  return windValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
     let dateArray = fullArray[0].split('-')
     let month = Number(dateArray[1])
@@ -87,7 +91,8 @@ const getWindSpeed = (forecast) => {
 }
 
 const getProbabilityOfPrecipitation = (forecast) => {
-  return forecast.properties.probabilityOfPrecipitation.values.reduce((newArray, currentValueObject) => {
+  let precipValues = forecast.properties.probabilityOfPrecipitation.values
+  return precipValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
     let dateArray = fullArray[0].split('-')
     let month = Number(dateArray[1])
@@ -107,7 +112,7 @@ const getProbabilityOfPrecipitation = (forecast) => {
         month: thisMonth, 
         day: thisDay, 
         hour: thisHour, 
-        probabilityOfPrecipitation: currentValueObject.value 
+        precipProb: currentValueObject.value 
       }
       newArray.push(weatherObj)
     }

@@ -11,9 +11,9 @@ export const Search = ({ getForecast }) => {
     event.preventDefault()
 
     let thresholds = {
-      temperature: { minTemp: minTemp, maxTemp: maxTemp },
+      temperature: { minTemp, maxTemp },
       windSpeed: wind,
-      probabilityOfPrecip: precipProbability
+      probOfPrecip: precipProbability
     }
     
     getForecast(thresholds)
@@ -25,7 +25,9 @@ export const Search = ({ getForecast }) => {
       
       <label>
           Min Temperature: 
-        <select value={minTemp} onChange={event => setMinTemp(Number(event.target.value))}>
+        <select value={minTemp}
+          onChange={event => setMinTemp(Number(event.target.value))}
+        >
           <option value={40}>40</option>
           <option value={50}>50</option>
           <option value={60}>60</option>
@@ -34,7 +36,9 @@ export const Search = ({ getForecast }) => {
 
       <label>
           Max Temperature: 
-        <select value={maxTemp} onChange={event => setMaxTemp(Number(event.target.value))}>
+        <select value={maxTemp}
+          onChange={event => setMaxTemp(Number(event.target.value))}
+        >
           <option value={80}>80</option>
           <option value={90}>90</option>
           <option value={100}>100</option>
@@ -43,7 +47,9 @@ export const Search = ({ getForecast }) => {
 
       <label>
           Wind Speed: 
-        <select value={wind} onChange={event => setWindSpeed(Number(event.target.value))}>
+        <select value={wind}
+          onChange={event => setWindSpeed(Number(event.target.value))}
+        >
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={20}>20</option>
@@ -53,7 +59,9 @@ export const Search = ({ getForecast }) => {
 
       <label>
           Probability of Precipitation: 
-        <select value={precipProbability} onChange={event => setProbability(Number(event.target.value))}>
+        <select value={precipProbability}
+          onChange={event => setProbability(Number(event.target.value))}
+        >
           <option value={30}>30</option>
           <option value={50}>50</option>
           <option value={70}>70</option>
