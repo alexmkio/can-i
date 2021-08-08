@@ -1,1 +1,8 @@
-{}
+{
+  "testFiles": [
+    "landing_spec.js",
+    "results_spec.js",
+    "suitable_spec.js",
+    "calendar_spec.js"
+  ]
+}

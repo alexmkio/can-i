@@ -1,25 +1,9 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('loadList', () => {
+  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+      { statusCode: 200, fixture: 'coordinates.json' })
+    .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
+      { fixture: 'weatherFromCoord.json' })
+    .intercept('GET', 'https://api.weather.gov/gridpoints/GNV/66,66', 
+    { fixture: 'weather.json' })
+    .visit('http://localhost:3000')
+});
