@@ -26,7 +26,7 @@ export const Search = ({ getForecast }) => {
       
       <label>
           Min Temperature: 
-        <select value={minTemp}
+        <select name='minTemp' value={minTemp}
           onChange={event => setMinTemp(Number(event.target.value))}
         >
           <option value={40}>40</option>
@@ -37,7 +37,7 @@ export const Search = ({ getForecast }) => {
 
       <label>
           Max Temperature: 
-        <select value={maxTemp}
+        <select name='maxTemp' value={maxTemp}
           onChange={event => setMaxTemp(Number(event.target.value))}
         >
           <option value={80}>80</option>
@@ -48,7 +48,7 @@ export const Search = ({ getForecast }) => {
 
       <label>
           Wind Speed: 
-        <select value={wind}
+        <select name='wind' value={wind}
           onChange={event => setWindSpeed(Number(event.target.value))}
         >
           <option value={5}>5</option>
@@ -60,7 +60,7 @@ export const Search = ({ getForecast }) => {
 
       <label>
           Probability of Precipitation: 
-        <select value={precipProbability}
+        <select name='precipProbability' value={precipProbability}
           onChange={event => setProbability(Number(event.target.value))}
         >
           <option value={30}>30</option>
