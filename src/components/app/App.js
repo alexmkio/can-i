@@ -57,8 +57,10 @@ export const App = () => {
 
   const addToCalendar = (hourObject) => {
     if (calendar.includes(hourObject)) {
-      let ind = calendar.indexOf(hourObject)
-      calendar.splice(ind, 1)
+      let currentCalendar = calendar
+      let ind = currentCalendar.indexOf(hourObject)
+      currentCalendar.splice(ind, 1)
+      setCalendar([...currentCalendar])
     } else {
       setCalendar([...calendar, hourObject])
     }
