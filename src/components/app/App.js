@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { Link, Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import './App.css';
 import { Search } from '../search/Search';
 import { Results } from '../results/Results'
@@ -69,7 +69,9 @@ export const App = () => {
   return (
     <>
       <header>
-        <h1>Can I look at a tree?</h1>
+        <Link to='/'>
+          <h1>Can I look at a tree?</h1>
+        </Link>
       </header>
       <main>
         {errorCode &&
