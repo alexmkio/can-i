@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import './Search.css';
 
@@ -71,4 +72,8 @@ export const Search = ({ getForecast }) => {
       <button onClick={event => onSubmitSearch(event)}>Submit</button>
     </form>
   )
+};
+
+Search.propTypes = {
+  getForecast: PropTypes.func
 };

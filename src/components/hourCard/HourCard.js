@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './HourCard.css';
 import { months, hours } from '../../utils/time'
 
@@ -25,4 +26,9 @@ export const HourCard = ({ hour, addToCalendar }) => {
       </dl>
     </article>
   )
+};
+
+HourCard.propTypes = {
+  hour: PropTypes.object,
+  addToCalendar: PropTypes.func
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './Results.css';
 
@@ -17,4 +18,8 @@ export const Results = ({ notice }) => {
       <Link to='/good_weather'>See all the future good weather</Link>
     </section>
   )
+};
+
+Results.propTypes = {
+  notice: PropTypes.object
 };
