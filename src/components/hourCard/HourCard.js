@@ -16,7 +16,7 @@ export const HourCard = ({ hour, addToCalendar }) => {
         <dd>{time}</dd>
 
         <dt>Temperature:</dt>
-        <dd>{hour.temperature} <span>&#8457;</span>F</dd>
+        <dd>{hour.temperature} <span>&#8457;</span></dd>
 
         <dt>Wind Speed:</dt>
         <dd>{hour.windSpeed} mph</dd>
