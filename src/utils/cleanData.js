@@ -52,6 +52,7 @@ const getTemperature = (forecast) => {
         month: thisMonth, 
         day: thisDay, 
         hour: thisHour,
+        inCalendar: false,
         temperature: ((currentValueObject.value * (9 / 5)) + 32) 
       }
       newArray.push(weatherObj)

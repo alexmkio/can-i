@@ -5,9 +5,18 @@ import { months, hours } from '../../utils/time'
 export const HourCard = ({ hour, addToCalendar }) => {
   let month = months.find(month => month.number === hour.month).name
   let time = hours.find(thisHour => thisHour.number === hour.hour).name
+  let icon = (hour.inCalendar ? 'remove' : 'add')
 
   return (
-    <article className='card' onClick={() => addToCalendar(hour)}>
+    <article className='card'>
+      <label>
+        <button className="material-icons-outlined md-24 icon"
+          onClick={() => addToCalendar(hour)}
+        >
+          {icon}
+        </button>
+      </label>
+
       <dl>
         <dt>Date:</dt>
         <dd>{month} {hour.day}</dd>
