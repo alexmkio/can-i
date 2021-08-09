@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './Error.css';
 import { httpResponses } from '../../utils/httpResponses'
 
 export const Error = ({ errorCode, clearSelected }) => {
-  let response = httpResponses.find(response => response.code === Number(errorCode))
+  let response = httpResponses.find(response =>
+    response.code === Number(errorCode)
+  )
   return (
     <article className='error-container'>
       <div className='error-div'>
@@ -21,5 +23,5 @@ export const Error = ({ errorCode, clearSelected }) => {
 
 Error.propTypes = {
   errorCode: PropTypes.string.isRequired,
-  clearSelected: PropTypes.func
+  clearSelected: PropTypes.func.isRequired
 };

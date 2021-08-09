@@ -1,0 +1,5 @@
+{
+  "properties": {
+    "forecastGridData": "https://api.weather.gov/gridpoints/GNV/66,66"
+  }
+}

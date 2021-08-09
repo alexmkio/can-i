@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './HourCard.css';
 import { months, hours } from '../../utils/time'
 
@@ -15,7 +16,7 @@ export const HourCard = ({ hour, addToCalendar }) => {
         <dd>{time}</dd>
 
         <dt>Temperature:</dt>
-        <dd>{hour.temperature} <span>&#8457;</span>F</dd>
+        <dd>{hour.temperature} <span>&#8457;</span></dd>
 
         <dt>Wind Speed:</dt>
         <dd>{hour.windSpeed} mph</dd>
@@ -25,4 +26,9 @@ export const HourCard = ({ hour, addToCalendar }) => {
       </dl>
     </article>
   )
+};
+
+HourCard.propTypes = {
+  hour: PropTypes.object.isRequired,
+  addToCalendar: PropTypes.func.isRequired
 };

@@ -6,7 +6,7 @@ export const determineSuitableHours = (thresholds, cleanedData, timezone) => {
       currentHourObj.temperature <= thresholds.temperature.maxTemp && 
       currentHourObj.temperature >= thresholds.temperature.minTemp && 
       currentHourObj.windSpeed <= thresholds.windSpeed && 
-      currentHourObj.probabilityOfPrecipitation <= thresholds.probabilityOfPrecip
+      currentHourObj.probabilityOfPrecipitation <= thresholds.probOfPrecip
     ) {
       return currentHourObj
     }

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { HourCard } from "../hourCard/HourCard"
 import './Calendar.css';
 
@@ -23,4 +24,9 @@ export const Calendar = ({ calendar, addToCalendar }) => {
       </section>
     </section>
   )
+};
+
+Calendar.propTypes = {
+  calendar: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addToCalendar: PropTypes.func.isRequired
 };
