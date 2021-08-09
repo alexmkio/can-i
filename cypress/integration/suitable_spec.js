@@ -1,62 +1,60 @@
 describe('Suitable Hours user flows', () => {
 
   beforeEach(() => {
-    cy.loadList();
+    cy.loadCalendar();
   });
 
   it('The url should be url/good_weather', () => {
-    cy.get('button').click()
-    cy.get('section[class="results"]').children('a').click()
     cy.url().should('include', '/good_weather')
   });
 
   it('The site should display the name of the app at all times', () => {
-    cy.get('button').click()
-    cy.get('section[class="results"]').children('a').click()
     cy.get('h1').contains('Can I look at a tree?')
   });
 
   it('The app title should be a link home', () => {
-    cy.get('button').click()
-    cy.get('section[class="results"]').children('a').click()
     cy.get('h1').click()
       .url().should('include', '/')
   });
 
   it('A user should see a subheader for the page', () => {
-    cy.get('button').click()
-    cy.get('section[class="results"]').children('a').click()
     cy.get('h2').contains(`Suitable hours to be outside`)
   });
 
-  it('A user should see instructions for adding hours to their calendar',
-  () => {
-    cy.get('button').click()
-    cy.get('section[class="results"]').children('a').click()
+  it('A user should see instructions for adding hours to their calendar', () => {
     cy.contains(
       `Click on an hour to add or delete it from your calendar`
     )
   });
 
   it('User should see a link to their calendar', () => {
-    cy.get('button').click()
-    cy.get('section[class="results"]').children('a').click()
     cy.get('section[class="possBlurb"]').children('a')
       .should('have.attr', 'href')
       .and('includes', '/calendar')
   });
 
-  it('The user should be taken to the calendar page after clicking the link', 
-  () => {
-    cy.get('button').click()
-    cy.get('section[class="results"]').children('a').click()
+  it('The user should be taken to the calendar page after clicking the link', () => {
     cy.get('section[class="possBlurb"]').children('a').click()
     cy.url().should('include', '/calendar') 
   });
 
-  it(
-    'Given certain thresholds/upcoming weather should see certain "good" hours', 
-  () => {
+  // The following test does currently not work as Cypress does not currently
+  // support typing enter on an "unfocused" element
+  // https://github.com/cypress-io/cypress/issues/8267
+  // it('The page can be navigated using the keyboard', () => {
+  //   cy.get('body').tab().tab().type('{enter}')
+  //   cy.url().should('include', '/calendar')  
+  // });
+
+});
+
+describe('Suitable Hours with hours user flows', () => {
+
+  beforeEach(() => {
+    cy.loadCalendarWithAdjustedDate();
+  });
+
+  it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {
     cy.get('select[name="minTemp"]').select('40')
       .get('select[name="maxTemp"]').select('100')
       .get('select[name="wind"]').select('30')
@@ -72,9 +70,7 @@ describe('Suitable Hours user flows', () => {
     cy.contains('10 PM')
   });
 
-  it(
-    'Given certain thresholds/upcoming weather should see certain "good" hours', 
-  () => {
+  it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {
     cy.get('select[name="minTemp"]').select('40')
       .get('select[name="maxTemp"]').select('90')
       .get('select[name="wind"]').select('30')
@@ -88,9 +84,7 @@ describe('Suitable Hours user flows', () => {
     cy.contains('10 PM')
   });
 
-  it(
-    'Given certain thresholds/upcoming weather should see certain "good" hours', 
-  () => {
+  it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {
     cy.get('select[name="minTemp"]').select('40')
       .get('select[name="maxTemp"]').select('100')
       .get('select[name="wind"]').select('20')
@@ -104,9 +98,7 @@ describe('Suitable Hours user flows', () => {
     cy.contains('10 PM')
   });
 
-  it(
-    'Given certain thresholds/upcoming weather should see certain "good" hours', 
-  () => {
+  it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {
     cy.get('select[name="minTemp"]').select('40')
       .get('select[name="maxTemp"]').select('100')
       .get('select[name="wind"]').select('30')
@@ -120,9 +112,7 @@ describe('Suitable Hours user flows', () => {
     cy.contains('8 PM')
   });
 
-  it(
-    'Each hour card contains a date, hour, temp, wind speed, & poss of precip', 
-  () => {
+  it('Each hour card contains a date, hour, temp, wind speed, & poss of precip', () => {
     cy.get('select[name="minTemp"]').select('40')
       .get('select[name="maxTemp"]').select('100')
       .get('select[name="wind"]').select('30')
@@ -135,15 +125,5 @@ describe('Suitable Hours user flows', () => {
     cy.contains('19')
     cy.contains('20%')
   });
-
-  // The following test does currently not work as Cypress does not currently
-  // support typing enter on an "unfocused" element
-  // https://github.com/cypress-io/cypress/issues/8267
-  // it('The page can be navigated using the keyboard', () => {
-  //   cy.get('button').click()
-  //   cy.get('section[class="results"]').children('a').click()
-  //   cy.get('body').tab().tab().type('{enter}')
-  //   cy.url().should('include', '/calendar')  
-  // });
 
 });

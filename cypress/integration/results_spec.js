@@ -22,8 +22,7 @@ describe('Results user flows', () => {
       .and('includes', '/good_weather')
   });
 
-  it('The user should be taken to the results page after clicking the link', 
-  () => {
+  it('The user should be taken to the results page after clicking the link', () => {
     cy.get('section[class="results"]').children('a').click()
     cy.url().should('include', '/good_weather') 
   });
@@ -44,10 +43,9 @@ describe('Good Results user flows', () => {
     cy.loadGoodResults();
   });
 
-  it('Given weather fixtures far into the future the user should see bad news', 
-  () => {
+  it('Given good weather for the current hour the user should see good news', () => {
     cy.get('h2').contains('Good news!')
-      .get('p').contains(`You can go outside for 3 hours!`)
+      .get('p').contains(`You can go outside for 6 hours!`)
   });
 
 });
@@ -58,8 +56,7 @@ describe('Bad Results user flows', () => {
     cy.loadBadResults();
   });
 
-  it('Given weather fixtures far into the future the user should see bad news', 
-  () => {
+  it('Given no good weather for the current hour the user should see bad news', () => {
     cy.get('h2').contains('Bad news')
       .get('p').contains(`You can't go outside for 9 hours!`)
   });

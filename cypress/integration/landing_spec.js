@@ -4,18 +4,15 @@ describe('Landing user flows', () => {
     cy.loadHome();
   });
 
-  it('The url should be url/', 
-  () => {
+  it('The url should be url/', () => {
     cy.url().should('include', '/')
   });
 
-  it('The site should display the name of the app at all times', 
-  () => {
+  it('The site should display the name of the app at all times', () => {
     cy.get('h1').contains('Can I look at a tree?')
   });
 
-  it('The app title should be a link home', 
-  () => {
+  it('The app title should be a link home', () => {
     cy.get('h1').click()
       .url().should('include', '/')
   });
@@ -50,8 +47,7 @@ describe('Landing user flows', () => {
         .should('have.value', '70')
   });
 
-  it('The user should be taken to the results page after clicking submit',
-  () => {
+  it('The user should be taken to the results page after clicking submit', () => {
     cy.get('button').click()
     cy.url().should('include', '/results')  
   });
