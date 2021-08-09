@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  color: white;
   line-height: 1.6;
   text-align: center;
 }
@@ -17,6 +16,8 @@ html {
 body {
   display: flex;
   flex-direction: column;
+  font-size: larger;
+  color: white;
 }
 
 a:link {
@@ -37,6 +38,8 @@ a:active {
 
 h1, h2 {
   text-transform: capitalize;
+  padding: 1vh;
+  line-height: 1.2;
 }
 
 header {
@@ -49,7 +52,7 @@ header {
 }
 
 main {
-  margin-top: 10vh;
+  margin-top: 8vh;
   display: flex;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.6);
