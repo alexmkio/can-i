@@ -1,7 +1,7 @@
 describe('Landing user flows', () => {
 
   beforeEach(() => {
-    cy.loadList();
+    cy.loadHome();
   });
 
   it('The url should be url/', 

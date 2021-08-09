@@ -1,8 +1,7 @@
 describe('Results user flows', () => {
 
   beforeEach(() => {
-    cy.loadList()
-      .get('button').click()
+    cy.loadResults();
   });
 
   it('The url should be url/results', () => {
@@ -16,12 +15,6 @@ describe('Results user flows', () => {
   it('The app title should be a link home', () => {
     cy.get('h1').click()
       .url().should('include', '/')
-  });
-
-  it('Given weather fixtures far into the future the user should see bad news', 
-  () => {
-    cy.get('h2').contains('Bad news')
-      .get('p').contains(`You can't go outside for`)
   });
 
   it('User should see a link to see good weather in the future', () => {
@@ -42,5 +35,33 @@ describe('Results user flows', () => {
   //   cy.get('body').tab().tab().type('{enter}')
   //   cy.url().should('include', '/good_weather')  
   // });
+
+});
+
+describe('Good Results user flows', () => {
+
+  beforeEach(() => {
+    cy.loadGoodResults();
+  });
+
+  it('Given weather fixtures far into the future the user should see bad news', 
+  () => {
+    cy.get('h2').contains('Good news!')
+      .get('p').contains(`You can go outside for 3 hours!`)
+  });
+
+});
+
+describe('Bad Results user flows', () => {
+
+  beforeEach(() => {
+    cy.loadBadResults();
+  });
+
+  it('Given weather fixtures far into the future the user should see bad news', 
+  () => {
+    cy.get('h2').contains('Bad news')
+      .get('p').contains(`You can't go outside for 9 hours!`)
+  });
 
 });
