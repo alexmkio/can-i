@@ -1,7 +1,7 @@
 describe('Suitable Hours user flows', () => {
 
   beforeEach(() => {
-    cy.loadCalendar();
+    cy.loadSuitableHours();
   });
 
   it('The url should be url/good_weather', () => {
@@ -51,7 +51,7 @@ describe('Suitable Hours user flows', () => {
 describe('Suitable Hours with hours user flows', () => {
 
   beforeEach(() => {
-    cy.loadCalendarWithAdjustedDate();
+    cy.loadSuitableHoursWithAdjustedDate();
   });
 
   it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {

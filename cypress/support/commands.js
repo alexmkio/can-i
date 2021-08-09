@@ -53,7 +53,7 @@ Cypress.Commands.add('loadBadResults', () => {
     .get('button').click()
 });
 
-Cypress.Commands.add('loadCalendar', () => {
+Cypress.Commands.add('loadSuitableHours', () => {
   cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
@@ -65,7 +65,7 @@ Cypress.Commands.add('loadCalendar', () => {
   cy.get('section[class="results"]').children('a').click()
 });
 
-Cypress.Commands.add('loadCalendarWithAdjustedDate', () => {
+Cypress.Commands.add('loadSuitableHoursWithAdjustedDate', () => {
   const now = new Date("2029-12-30T22:01:01.449Z")
   cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
       { statusCode: 200, fixture: 'coordinates.json' })
@@ -75,4 +75,46 @@ Cypress.Commands.add('loadCalendarWithAdjustedDate', () => {
     { fixture: 'weather.json' })
     .clock(now)
     .visit('http://localhost:3000')
+});
+
+Cypress.Commands.add('loadCalendar', () => {
+  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+      { statusCode: 200, fixture: 'coordinates.json' })
+    .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
+      { fixture: 'weatherFromCoord.json' })
+    .intercept('GET', 'https://api.weather.gov/gridpoints/GNV/66,66', 
+    { fixture: 'weather.json' })
+    .visit('http://localhost:3000')
+    .get('button').click()
+  cy.get('section[class="results"]').children('a').click()
+  cy.get('section[class="possBlurb"]').children('a').click()
+});
+
+Cypress.Commands.add('loadCalendar', () => {
+  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+      { statusCode: 200, fixture: 'coordinates.json' })
+    .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
+      { fixture: 'weatherFromCoord.json' })
+    .intercept('GET', 'https://api.weather.gov/gridpoints/GNV/66,66', 
+    { fixture: 'weather.json' })
+    .visit('http://localhost:3000')
+    .get('button').click()
+  cy.get('section[class="results"]').children('a').click()
+  cy.get('section[class="possBlurb"]').children('a').click()
+});
+
+Cypress.Commands.add('loadSuitableHoursWithHours', () => {
+  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+      { statusCode: 200, fixture: 'coordinates.json' })
+    .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
+      { fixture: 'weatherFromCoord.json' })
+    .intercept('GET', 'https://api.weather.gov/gridpoints/GNV/66,66', 
+    { fixture: 'weather.json' })
+    .visit('http://localhost:3000')
+    .get('select[name="minTemp"]').select('40')
+    .get('select[name="maxTemp"]').select('100')
+    .get('select[name="wind"]').select('30')
+    .get('select[name="precipProbability"]').select('70')
+    .get('button').click()
+  cy.get('section[class="results"]').children('a').click()
 });
