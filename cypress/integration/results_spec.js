@@ -29,12 +29,13 @@ describe('Results user flows', () => {
 
   it('User should see a link to see good weather in the future', 
   () => {
-    cy.get('section').children('a').should('have.attr', 'href').and('includes', '/good_weather')
+    cy.get('section[class="results"]').children('a').should('have.attr', 'href')
+      .and('includes', '/good_weather')
   });
 
   it('The user should be taken to the results page after clicking the link', 
   () => {
-    cy.get('section').children('a').click()
+    cy.get('section[class="results"]').children('a').click()
     cy.url().should('include', '/good_weather') 
   });
 
