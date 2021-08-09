@@ -10,14 +10,8 @@
 }
 
 .cards {
-  margin: 0 auto;
+  margin: 1vh auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  /* grid-template-rows: auto;
-  justify-content: space-evenly;
-  justify-items: center;
-  align-content: space-evenly;
-  align-items: center; */
-  /* gap: 1rem; */
   gap: 2rem;
 }

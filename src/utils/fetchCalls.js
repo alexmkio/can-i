@@ -1,5 +1,8 @@
 export const fetchData = async (url) => {
-  let response = await fetch(url);
+  let response = await fetch(url, {
+    'User-Agent': `(https://github.com/alexmkio/can-i,
+      alexandermartelkio@gmail.com)`
+  });
   return checkForError(response);
 };
 

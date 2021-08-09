@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import { Search } from '../search/Search';
 import { Results } from '../results/Results'
@@ -17,16 +17,16 @@ export const App = () => {
   const [suitableHours, setSuitableHours] = useState([]);
   const [notice, setNotice] = useState({});
   const [calendar, setCalendar] = useState([]);
-  const history = useHistory();
 
   const fetchAndCleanData = async () => {
     try {
-      let ipUrl = 'http://ip-api.com/json/?fields=49600'
-      let weatherApi = 'https://api.weather.gov/points/'
-      let coordinates = await fetchData(ipUrl)
-      let pointsUrl = `${weatherApi}${coordinates.lat},${coordinates.lon}`
-      let points = await fetchData(pointsUrl)
-      let forecast = await fetchData(points.properties.forecastGridData)
+      let coordinates = await fetchData(
+        'http://ip-api.com/json/?fields=49600'
+      )
+      let gridPoints = await fetchData(
+        `https://api.weather.gov/points/${coordinates.lat},${coordinates.lon}`
+      )
+      let forecast = await fetchData(gridPoints.properties.forecastGridData)
       let cleanedData = await cleanData(forecast)
       setCoordinates(coordinates)
       setForecast(cleanedData)
@@ -48,7 +48,6 @@ export const App = () => {
     let notice = craftNotice(suitableHours, coordinates.timezone)
     setSuitableHours(suitableHours)
     setNotice(notice)
-    history.push('/results');
   };
 
   const clearSelected = () => {
@@ -56,14 +55,19 @@ export const App = () => {
   }
 
   const addToCalendar = (hourObject) => {
+    let suitable = suitableHours
+    let thatOne = suitable.indexOf(hourObject)
     if (calendar.includes(hourObject)) {
       let currentCalendar = calendar
       let ind = currentCalendar.indexOf(hourObject)
       currentCalendar.splice(ind, 1)
+      suitable[thatOne].inCalendar = false
       setCalendar([...currentCalendar])
     } else {
+      suitable[thatOne].inCalendar = true
       setCalendar([...calendar, hourObject])
     }
+    setSuitableHours([...suitable])
   }
 
   return (

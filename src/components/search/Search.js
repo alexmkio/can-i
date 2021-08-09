@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import './Search.css';
@@ -8,15 +9,12 @@ export const Search = ({ getForecast }) => {
   const [wind, setWindSpeed] = useState(10);
   const [precipProbability, setProbability] = useState(50);
 
-  const onSubmitSearch = (event) => {
-    event.preventDefault()
-
+  const onSubmitSearch = () => {
     let thresholds = {
       temperature: { minTemp, maxTemp },
       windSpeed: wind,
       probOfPrecip: precipProbability
     }
-    
     getForecast(thresholds)
   }
 
@@ -69,7 +67,8 @@ export const Search = ({ getForecast }) => {
         </select>
       </label>
 
-      <button onClick={event => onSubmitSearch(event)}>Submit</button>
+      <Link to='/results/' onClick={() => onSubmitSearch()}>Submit</Link>
+        
     </form>
   )
 };

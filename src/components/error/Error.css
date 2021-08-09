@@ -1,12 +1,7 @@
 .error-container {
   display: flex;
-  width: 100%;
-  height: 100vh;
+  flex-direction: column;
   justify-content: center;
-  line-height: 1.6;
-  background-color: white;
-  color: black;
-  padding-top: 1vh;
 }
 
 .error-div {
@@ -17,14 +12,4 @@
 
 .error-h2 {
   margin: 0;
-}
-
-@media screen and (max-width: 500px) {
-  .error-div {
-    max-width: 90vw;
-  }
-
-  .error-h2 {
-    font-size: 2em;
-  }
 }
