@@ -56,7 +56,7 @@ describe('Landing user flows', () => {
     cy.url().should('include', '/results')  
   });
 
-  it('The homepage can be fully navigated using the keyboard', () => {
+  it('The homepage can be navigated using the keyboard', () => {
     cy.get('body').tab().tab().tab().tab().tab().tab().type('{enter}')
     cy.url().should('include', '/results')  
   });

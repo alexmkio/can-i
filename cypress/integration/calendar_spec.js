@@ -100,4 +100,17 @@ describe('Calendar user flows', () => {
     cy.contains('60%')
   });
 
+  // The following test does currently not work as Cypress does not currently
+  // support typing enter on an "unfocused" element
+  // https://github.com/cypress-io/cypress/issues/8267
+  // it('The page can be navigated using the keyboard', () => {
+  //   cy.get('button').click()
+  //   cy.get('section[class="results"]').children('a').click()
+  //   cy.get('section[class="possBlurb"]').children('a').click()
+  //   cy.get('body').tab().tab().tab().type('{enter}')
+  //   cy.get('body').tab().tab().type('{enter}')
+  //   cy.url().should('include', '/calendar')
+  //     .get('.card').should('have.length', 1)
+  // });
+
 });

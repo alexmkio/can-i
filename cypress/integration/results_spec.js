@@ -38,7 +38,7 @@ describe('Results user flows', () => {
   // The following test does currently not work as Cypress does not currently
   // support typing enter on an "unfocused" element
   // https://github.com/cypress-io/cypress/issues/8267
-  // it('The page can be fully navigated using the keyboard', () => {
+  // it('The page can be navigated using the keyboard', () => {
   //   cy.get('body').tab().tab().type('{enter}')
   //   cy.url().should('include', '/good_weather')  
   // });
