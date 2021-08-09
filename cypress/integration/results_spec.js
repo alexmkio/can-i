@@ -5,18 +5,15 @@ describe('Results user flows', () => {
       .get('button').click()
   });
 
-  it('The url should be url/results', 
-  () => {
+  it('The url should be url/results', () => {
     cy.url().should('include', '/results')
   });
 
-  it('The site should display the name of the app at all times', 
-  () => {
+  it('The site should display the name of the app at all times', () => {
     cy.get('h1').contains('Can I look at a tree?')
   });
 
-  it('The app title should be a link home', 
-  () => {
+  it('The app title should be a link home', () => {
     cy.get('h1').click()
       .url().should('include', '/')
   });
@@ -27,8 +24,7 @@ describe('Results user flows', () => {
       .get('p').contains(`You can't go outside for`)
   });
 
-  it('User should see a link to see good weather in the future', 
-  () => {
+  it('User should see a link to see good weather in the future', () => {
     cy.get('section[class="results"]').children('a').should('have.attr', 'href')
       .and('includes', '/good_weather')
   });

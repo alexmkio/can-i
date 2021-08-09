@@ -4,30 +4,26 @@ describe('Suitable Hours user flows', () => {
     cy.loadList();
   });
 
-  it('The url should be url/good_weather', 
-  () => {
+  it('The url should be url/good_weather', () => {
     cy.get('button').click()
     cy.get('section[class="results"]').children('a').click()
     cy.url().should('include', '/good_weather')
   });
 
-  it('The site should display the name of the app at all times', 
-  () => {
+  it('The site should display the name of the app at all times', () => {
     cy.get('button').click()
     cy.get('section[class="results"]').children('a').click()
     cy.get('h1').contains('Can I look at a tree?')
   });
 
-  it('The app title should be a link home', 
-  () => {
+  it('The app title should be a link home', () => {
     cy.get('button').click()
     cy.get('section[class="results"]').children('a').click()
     cy.get('h1').click()
       .url().should('include', '/')
   });
 
-  it('A user should see a subheader for the page',
-  () => {
+  it('A user should see a subheader for the page', () => {
     cy.get('button').click()
     cy.get('section[class="results"]').children('a').click()
     cy.get('h2').contains(`Suitable hours to be outside`)
@@ -42,11 +38,11 @@ describe('Suitable Hours user flows', () => {
     )
   });
 
-  it('User should see a link to their calendar', 
-  () => {
+  it('User should see a link to their calendar', () => {
     cy.get('button').click()
     cy.get('section[class="results"]').children('a').click()
-    cy.get('section[class="possBlurb"]').children('a').should('have.attr', 'href')
+    cy.get('section[class="possBlurb"]').children('a')
+      .should('have.attr', 'href')
       .and('includes', '/calendar')
   });
 
@@ -136,7 +132,7 @@ describe('Suitable Hours user flows', () => {
     cy.contains('December 30')
     cy.contains('5 PM')
     cy.contains('99')
-    cy.contains('19 Mph')
+    cy.contains('19')
     cy.contains('20%')
   });
 

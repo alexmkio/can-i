@@ -26,16 +26,14 @@ describe('Landing user flows', () => {
     )
   });
 
-  it('Should have a form with default values', 
-  () => {
+  it('Should have a form with default values', () => {
     cy.get('select[name="minTemp"]').should('have.value', '50')
       .get('select[name="maxTemp"]').should('have.value', '90')
       .get('select[name="wind"]').should('have.value', '10')
       .get('select[name="precipProbability"]').should('have.value', '50')
   });
 
-  it('User can choose a different value than the default value', 
-  () => {
+  it('User can choose a different value than the default value', () => {
     cy.get('select[name="minTemp"]').select('40').should('have.value', '40')
       .get('select[name="minTemp"]').select('60').should('have.value', '60')
 
