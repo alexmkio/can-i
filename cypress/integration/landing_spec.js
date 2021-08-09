@@ -52,7 +52,13 @@ describe('Landing user flows', () => {
         .should('have.value', '70')
   });
 
-  it('The homepage can be fully navigated using tab', () => {
+  it('The user should be taken to the results page after clicking submit',
+  () => {
+    cy.get('button').click()
+    cy.url().should('include', '/results')  
+  });
+
+  it('The homepage can be fully navigated using the keyboard', () => {
     cy.get('body').tab().tab().tab().tab().tab().tab().type('{enter}')
     cy.url().should('include', '/results')  
   });
