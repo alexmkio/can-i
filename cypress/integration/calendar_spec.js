@@ -23,7 +23,7 @@ describe('Calendar user flows', () => {
 
   it('A user should see instructions for adding hours to their calendar', () => {
     cy.contains(
-      `Click on an hour to add or delete it from your calendar`
+      `Click on an hour to delete it from your calendar`
     )
   });
 
@@ -46,28 +46,28 @@ describe('Calendar with hours user flows', () => {
   });
 
   it('A user should be able to add an hour to their calendar', () => {
-    cy.get('.card').first().click()
+    cy.get('button').first().click()
       .get('section[class="possBlurb"]').children('a').click()
     cy.get('.card').should('have.length', 1)
   });
 
   it('A user should be able to add multiple hours to their calendar', () => {
-    cy.get('.card').first().click()
-      .get('.card').eq(3).click()
+    cy.get('button').first().click()
+      .get('button').eq(3).click()
       .get('section[class="possBlurb"]').children('a').click()
     cy.get('.card').should('have.length', 2)
   });
 
   it('A user should be able to delete an hour from their calendar', () => {
-    cy.get('.card').first().click()
-      .get('.card').eq(3).click()
+    cy.get('button').first().click()
+      .get('button').eq(3).click()
       .get('section[class="possBlurb"]').children('a').click()
-    cy.get('.card').first().click()
+    cy.get('button').first().click()
     cy.get('.card').should('have.length', 1)
   });
 
   it('Each hour card contains a date, hour, temp, wind speed, & poss of precip', () => {
-    cy.get('.card').last().click()
+    cy.get('button').last().click()
       .get('section[class="possBlurb"]').children('a').click()
     cy.contains('December 30')
     cy.contains('10 PM')
