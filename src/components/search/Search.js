@@ -67,7 +67,9 @@ export const Search = ({ getForecast }) => {
         </select>
       </label>
 
-      <Link name='submit' to='/results' onClick={() => onSubmitSearch()}>Submit</Link>
+      <Link name='submit' to='/results' onClick={() => onSubmitSearch()}>
+        Submit
+      </Link>
         
     </form>
   )
