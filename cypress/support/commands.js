@@ -16,7 +16,7 @@ Cypress.Commands.add('loadResults', () => {
     .intercept('GET', 'https://api.weather.gov/gridpoints/GNV/66,66', 
     { fixture: 'weather.json' })
     .visit('http://localhost:3000')
-    .get('button').click()
+    .get('a[name="submit"]').click()
 });
 
 Cypress.Commands.add('loadGoodResults', () => {
@@ -33,7 +33,7 @@ Cypress.Commands.add('loadGoodResults', () => {
     .get('select[name="maxTemp"]').select('100')
     .get('select[name="wind"]').select('30')
     .get('select[name="precipProbability"]').select('70')
-    .get('button').click()
+    .get('a[name="submit"]').click()
 });
 
 Cypress.Commands.add('loadBadResults', () => {
@@ -50,7 +50,7 @@ Cypress.Commands.add('loadBadResults', () => {
     .get('select[name="maxTemp"]').select('100')
     .get('select[name="wind"]').select('30')
     .get('select[name="precipProbability"]').select('70')
-    .get('button').click()
+    .get('a[name="submit"]').click()
 });
 
 Cypress.Commands.add('loadSuitableHours', () => {
@@ -61,7 +61,7 @@ Cypress.Commands.add('loadSuitableHours', () => {
     .intercept('GET', 'https://api.weather.gov/gridpoints/GNV/66,66', 
     { fixture: 'weather.json' })
     .visit('http://localhost:3000')
-    .get('button').click()
+    .get('a[name="submit"]').click()
   cy.get('section[class="results"]').children('a').click()
 });
 
@@ -85,7 +85,7 @@ Cypress.Commands.add('loadCalendar', () => {
     .intercept('GET', 'https://api.weather.gov/gridpoints/GNV/66,66', 
     { fixture: 'weather.json' })
     .visit('http://localhost:3000')
-    .get('button').click()
+    .get('a[name="submit"]').click()
   cy.get('section[class="results"]').children('a').click()
   cy.get('section[class="possBlurb"]').children('a').click()
 });
@@ -98,7 +98,7 @@ Cypress.Commands.add('loadCalendar', () => {
     .intercept('GET', 'https://api.weather.gov/gridpoints/GNV/66,66', 
     { fixture: 'weather.json' })
     .visit('http://localhost:3000')
-    .get('button').click()
+    .get('a[name="submit"]').click()
   cy.get('section[class="results"]').children('a').click()
   cy.get('section[class="possBlurb"]').children('a').click()
 });
@@ -115,6 +115,6 @@ Cypress.Commands.add('loadSuitableHoursWithHours', () => {
     .get('select[name="maxTemp"]').select('100')
     .get('select[name="wind"]').select('30')
     .get('select[name="precipProbability"]').select('70')
-    .get('button').click()
+    .get('a[name="submit"]').click()
   cy.get('section[class="results"]').children('a').click()
 });
