@@ -76,7 +76,7 @@ export const App = () => {
     <>
       <header>
         <Link to='/'>
-          <h1>Can I look at a tree?</h1>
+          <h1>Testing</h1>
         </Link>
       </header>
       <main>
