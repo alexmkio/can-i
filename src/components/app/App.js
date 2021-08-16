@@ -19,12 +19,14 @@ export const App = () => {
   const [calendar, setCalendar] = useState([]);
 
   const fetchAndCleanData = async () => {
+    let apiKey = `103a0ac5b110412c9a639e3ab5afd99f`
+    let weatherURL = `https://api.weather.gov/points/`
     try {
       let coordinates = await fetchData(
-        `https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f`
+        `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`
       )
       let gridPoints = await fetchData(
-        `https://api.weather.gov/points/${coordinates.latitude},${coordinates.longitude}`
+        `${weatherURL}${coordinates.latitude},${coordinates.longitude}`
       )
       let forecast = await fetchData(gridPoints.properties.forecastGridData)
       let cleanedData = await cleanData(forecast)
