@@ -1,5 +1,5 @@
 Cypress.Commands.add('loadHome', () => {
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
@@ -9,7 +9,7 @@ Cypress.Commands.add('loadHome', () => {
 });
 
 Cypress.Commands.add('loadResults', () => {
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
@@ -21,7 +21,7 @@ Cypress.Commands.add('loadResults', () => {
 
 Cypress.Commands.add('loadGoodResults', () => {
   const now = new Date("2029-12-30T22:01:01.449Z")
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
@@ -38,7 +38,7 @@ Cypress.Commands.add('loadGoodResults', () => {
 
 Cypress.Commands.add('loadBadResults', () => {
   const now = new Date("2029-12-30T13:01:01.449Z")
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
@@ -54,7 +54,7 @@ Cypress.Commands.add('loadBadResults', () => {
 });
 
 Cypress.Commands.add('loadSuitableHours', () => {
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
@@ -67,7 +67,7 @@ Cypress.Commands.add('loadSuitableHours', () => {
 
 Cypress.Commands.add('loadSuitableHoursWithAdjustedDate', () => {
   const now = new Date("2029-12-30T22:01:01.449Z")
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
@@ -78,7 +78,7 @@ Cypress.Commands.add('loadSuitableHoursWithAdjustedDate', () => {
 });
 
 Cypress.Commands.add('loadCalendar', () => {
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
@@ -91,7 +91,7 @@ Cypress.Commands.add('loadCalendar', () => {
 });
 
 Cypress.Commands.add('loadCalendar', () => {
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
@@ -104,7 +104,7 @@ Cypress.Commands.add('loadCalendar', () => {
 });
 
 Cypress.Commands.add('loadSuitableHoursWithHours', () => {
-  cy.intercept('GET', 'http://ip-api.com/json/?fields=49600', 
+  cy.intercept('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f', 
       { statusCode: 200, fixture: 'coordinates.json' })
     .intercept('GET', 'https://api.weather.gov/points/66.6666,-66.666', 
       { fixture: 'weatherFromCoord.json' })
