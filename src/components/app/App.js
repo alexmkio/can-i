@@ -21,10 +21,10 @@ export const App = () => {
   const fetchAndCleanData = async () => {
     try {
       let coordinates = await fetchData(
-        'http://ip-api.com/json/?fields=49600'
+        `https://api.ipgeolocation.io/ipgeo?apiKey=103a0ac5b110412c9a639e3ab5afd99f`
       )
       let gridPoints = await fetchData(
-        `https://api.weather.gov/points/${coordinates.lat},${coordinates.lon}`
+        `https://api.weather.gov/points/${coordinates.latitude},${coordinates.longitude}`
       )
       let forecast = await fetchData(gridPoints.properties.forecastGridData)
       let cleanedData = await cleanData(forecast)
