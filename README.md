@@ -4,7 +4,7 @@ Can I go look at a tree? was a Mod 3 solo project in the Front End program at th
 
 The project spec can be found [here](https://frontend.turing.edu/projects/module-3/niche-audience.html).
 
-The project is deployed [here](https://can-i-alexmkio.vercel.app/).
+The project is deployed [here](https://alexmkio.github.io/can-i/) and [here](https://can-i-alexmkio.vercel.app/).
 
 ## Install
 
