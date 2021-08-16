@@ -19,7 +19,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: Cypress run
+    - name: Run Cypress suite
       uses: cypress-io/github-action@v2
       with:
           start: npm start
+
+    - name: Release Drafter
+      uses: release-drafter/release-drafter@v5
