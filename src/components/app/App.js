@@ -76,8 +76,9 @@ export const App = () => {
     <>
       <header>
         <Link to='/'>
-          <h1>Testing</h1>
+          <h1>Can I look at a tree?</h1>
         </Link>
+        <h2>testing</h2>
       </header>
       <main>
         {errorCode &&
