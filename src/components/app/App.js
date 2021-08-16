@@ -78,7 +78,6 @@ export const App = () => {
         <Link to='/'>
           <h1>Can I look at a tree?</h1>
         </Link>
-        <h2>testing</h2>
       </header>
       <main>
         {errorCode &&
