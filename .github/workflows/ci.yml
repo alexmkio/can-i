@@ -26,3 +26,5 @@ jobs:
 
     - name: Release Drafter
       uses: release-drafter/release-drafter@v5
+      env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
