@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "lat": 66.6666,
-  "lon": -66.666,
+  "latitude": 66.6666,
+  "longitude": -66.666,
   "timezone": "America/New_York"
 }
