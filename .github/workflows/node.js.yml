@@ -16,7 +16,8 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
@@ -24,7 +25,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+    - name: Install dependencies
+      uses: npm install
+
+    - name: Start server
+      uses: npm start
+      
     - name: Cypress run
       uses: cypress-io/github-action@v2
