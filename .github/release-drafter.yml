@@ -1,5 +1,4 @@
 change-template: '# [PR#$NUMBER - $TITLE]($URL) @$AUTHOR'
-change-template: '## $BODY'
 template: |
   ## What’s Changed
   $CHANGES
