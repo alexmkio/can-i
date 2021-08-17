@@ -1,4 +1,4 @@
-category-template:
+category-template: '## $TITLE'
 name-template: '### [PR#$NUMBER]($URL)'
 change-template: '- $BODY'
 template: |
