@@ -1,5 +1,6 @@
 category-template:
 name-template: '### [PR#$NUMBER]($URL)'
+change-template: '- $BODY'
 template: |
   ## What’s Changed
   $CHANGES
