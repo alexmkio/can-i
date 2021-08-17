@@ -6,7 +6,6 @@ The project spec can be found [here](https://frontend.turing.edu/projects/module
 
 The project is deployed [here](https://alexmkio.github.io/can-i/).
 
-
 ## Install
 
 1. Clone down this repository `git clone https://github.com/alexmkio/can-i`
