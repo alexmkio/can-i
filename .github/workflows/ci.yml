@@ -21,6 +21,7 @@ jobs:
       
     - name: Run Cypress suite
       uses: cypress-io/github-action@v2
+      continue-on-error: false
       with:
           start: npm start
 
