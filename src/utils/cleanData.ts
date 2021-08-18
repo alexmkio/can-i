@@ -1,4 +1,6 @@
-export const cleanData = (forecast) => {
+import { Weather } from "../interfaces/weather"
+
+export const cleanData = (forecast: Weather) => {
   let tempObjects = getTemperature(forecast)
   let windObjects = getWindSpeed(forecast)
   let preciptObjects = getProbabilityOfPrecipitation(forecast)
@@ -30,7 +32,7 @@ export const cleanData = (forecast) => {
   })
 };
 
-const getTemperature = (forecast) => {
+const getTemperature = (forecast: Weather) => {
   let tempValues = forecast.properties.temperature.values
   return tempValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
@@ -38,7 +40,7 @@ const getTemperature = (forecast) => {
     let month = Number(dateArray[1])
     let day = Number(dateArray[2])
     let hour = Number(fullArray[1].split(':')[0])
-    let hoursThisLasts = fullArray.join().split('H').join().split(',')[2]
+    let hoursThisLasts = Number(fullArray.join().split('H').join().split(',')[2])
 
     for (let i = 0; i < hoursThisLasts; i++) {
       let thisMonth = month
@@ -61,7 +63,7 @@ const getTemperature = (forecast) => {
   }, [])
 }
 
-const getWindSpeed = (forecast) => {
+const getWindSpeed = (forecast: Weather) => {
   let windValues = forecast.properties.windSpeed.values
   return windValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
@@ -69,7 +71,7 @@ const getWindSpeed = (forecast) => {
     let month = Number(dateArray[1])
     let day = Number(dateArray[2])
     let hour = Number(fullArray[1].split(':')[0])
-    let hoursThisLasts = fullArray.join().split('H').join().split(',')[2]
+    let hoursThisLasts = Number(fullArray.join().split('H').join().split(',')[2])
 
     for (let i = 0; i < hoursThisLasts; i++) {
       let thisMonth = month
@@ -91,7 +93,7 @@ const getWindSpeed = (forecast) => {
   }, [])
 }
 
-const getProbabilityOfPrecipitation = (forecast) => {
+const getProbabilityOfPrecipitation = (forecast: Weather) => {
   let precipValues = forecast.properties.probabilityOfPrecipitation.values
   return precipValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
@@ -99,7 +101,7 @@ const getProbabilityOfPrecipitation = (forecast) => {
     let month = Number(dateArray[1])
     let day = Number(dateArray[2])
     let hour = Number(fullArray[1].split(':')[0])
-    let hoursThisLasts = fullArray.join().split('H').join().split(',')[2]
+    let hoursThisLasts = Number(fullArray.join().split('H').join().split(',')[2])
 
     for (let i = 0; i < hoursThisLasts; i++) {
       let thisMonth = month
