@@ -1,22 +1,42 @@
 import { Weather } from "../interfaces/weather"
+// import { CleanedHour } from '../interfaces/index';
 
 export const cleanData = (forecast: Weather) => {
   let tempObjects = getTemperature(forecast)
   let windObjects = getWindSpeed(forecast)
   let preciptObjects = getProbabilityOfPrecipitation(forecast)
 
-  return tempObjects.map(currentTempObj => {
+  // let heyyy: CleanedHour[] = []
+  // if (tempObjects.length && windObjects.length && preciptObjects.length) {
+  //   tempObjects.forEach(currentTempObj => {
+  //     let matchingWindObj = windObjects.find(currentWindObj =>
+  //       currentWindObj.month === currentTempObj.month && 
+  //       currentWindObj.day === currentTempObj.day && 
+  //       currentWindObj.hour === currentTempObj.hour)
+  //     let matchingPreciptObj = preciptObjects.find(currentPreciptObj =>
+  //       currentPreciptObj.month === currentTempObj.month && 
+  //       currentPreciptObj.day === currentTempObj.day && 
+  //       currentPreciptObj.hour === currentTempObj.hour)
+  //     if (matchingWindObj) {
+  //       currentTempObj.windSpeed = matchingWindObj.windSpeed
+  //     }
+  //     if (matchingPreciptObj) {
+  //       currentTempObj.precipProb = matchingPreciptObj.precipProb
+  //     }
+  //     heyyy.push(currentTempObj)
+  //   })
+  // }
+  // return heyyy
 
+  return tempObjects.map(currentTempObj => {
     let matchingWindObj = windObjects.find(currentWindObj =>
       currentWindObj.month === currentTempObj.month && 
       currentWindObj.day === currentTempObj.day && 
       currentWindObj.hour === currentTempObj.hour)
-
     let matchingPreciptObj = preciptObjects.find(currentPreciptObj =>
       currentPreciptObj.month === currentTempObj.month && 
       currentPreciptObj.day === currentTempObj.day && 
       currentPreciptObj.hour === currentTempObj.hour)
-      
     if (matchingWindObj) {
       currentTempObj.windSpeed = matchingWindObj.windSpeed
     }
