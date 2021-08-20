@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { SearchProps } from '../../interfaces/index';
 import './Search.css';
 
-export const Search = ({ getForecast }) => {
+export const Search: React.FC<SearchProps> = ({ getForecast }) => {
   const [minTemp, setMinTemp] = useState(50);
   const [maxTemp, setMaxTemp] = useState(90);
   const [wind, setWindSpeed] = useState(10);
@@ -11,7 +11,10 @@ export const Search = ({ getForecast }) => {
 
   const onSubmitSearch = () => {
     let thresholds = {
-      temperature: { minTemp, maxTemp },
+      temperature: {
+        low: minTemp,
+        high: maxTemp
+      },
       windSpeed: wind,
       probOfPrecip: precipProbability
     }
@@ -67,14 +70,10 @@ export const Search = ({ getForecast }) => {
         </select>
       </label>
 
-      <Link name='submit' to='/results' onClick={() => onSubmitSearch()}>
+      <Link to='/results' onClick={() => onSubmitSearch()}>
         Submit
       </Link>
         
     </form>
   )
-};
-
-Search.propTypes = {
-  getForecast: PropTypes.func.isRequired
 };

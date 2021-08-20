@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
+import React from 'react';
+import { HourProps } from '../../interfaces/index';
 import './HourCard.css';
-import { months, hours } from '../../utils/time'
+import { calendar } from '../../utils/time'
 
-export const HourCard = ({ hour, addToCalendar }) => {
-  let month = months.find(month => month.number === hour.month).name
-  let time = hours.find(thisHour => thisHour.number === hour.hour).name
+export const HourCard: React.FC<HourProps> = ({ hour, addToCalendar }) => {
+  let month = calendar.months.find(month => month.number === hour.month)?.name
+  let time = calendar.hours.find(thisHour => thisHour.number === hour.hour)?.name
   let icon = (hour.inCalendar ? 'remove' : 'add')
 
   return (
@@ -35,9 +36,4 @@ export const HourCard = ({ hour, addToCalendar }) => {
       </dl>
     </article>
   )
-};
-
-HourCard.propTypes = {
-  hour: PropTypes.object.isRequired,
-  addToCalendar: PropTypes.func.isRequired
 };

@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { PossibilitiesProps } from '../../interfaces/index';
 import { HourCard } from "../hourCard/HourCard"
 import './Possibilities.css';
 
-export const Possibilities = ({ suitableHours, addToCalendar }) => {
+export const Possibilities: React.FC<PossibilitiesProps> = ({ suitableHours, addToCalendar }) => {
   let hourCards = suitableHours.map(suitableHour => {
     return (
       <HourCard
@@ -26,9 +27,4 @@ export const Possibilities = ({ suitableHours, addToCalendar }) => {
       </section>
     </section>
   )
-};
-
-Possibilities.propTypes = {
-  suitableHours: PropTypes.arrayOf(PropTypes.object).isRequired,
-  addToCalendar: PropTypes.func.isRequired
 };

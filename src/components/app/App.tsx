@@ -9,31 +9,33 @@ import { Error } from '../error/Error'
 import { fetchData } from '../../utils/fetchCalls';
 import { cleanData } from '../../utils/cleanData';
 import { determineSuitableHours, craftNotice } from '../../utils/utils'
+import { IpFetch, CleanedHour, Notice, Thresholds } from '../../interfaces/index';
 
 export const App = () => {
-  const [coordinates, setCoordinates] = useState({});
-  const [forecast, setForecast] = useState([]);
-  const [errorCode, setErrorCode] = useState('');
-  const [suitableHours, setSuitableHours] = useState([]);
-  const [notice, setNotice] = useState({});
-  const [calendar, setCalendar] = useState([]);
+  const [coordinates, setCoordinates] = useState<IpFetch | undefined>(undefined);
+  const [forecast, setForecast] = useState<CleanedHour[]>([]);
+  const [errorCode, setErrorCode] = useState<number>(0);
+  const [suitableHours, setSuitableHours] = useState<CleanedHour[]>([]);
+  const [notice, setNotice] = useState<Notice>({ nice: false, hours: 0 });
+  const [schedule, setSchedule] = useState<CleanedHour[]>([]);
 
   const fetchAndCleanData = async () => {
-    let apiKey = `103a0ac5b110412c9a639e3ab5afd99f`
+    let ipKey = `103a0ac5b110412c9a639e3ab5afd99f`
+    let ipParams = `&fields=latitude,longitude,time_zone`
     let weatherURL = `https://api.weather.gov/points/`
     try {
       let coordinates = await fetchData(
-        `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`
+        `https://api.ipgeolocation.io/ipgeo?apiKey=${ipKey}${ipParams}`
       )
       let gridPoints = await fetchData(
         `${weatherURL}${coordinates.latitude},${coordinates.longitude}`
       )
       let forecast = await fetchData(gridPoints.properties.forecastGridData)
-      let cleanedData = await cleanData(forecast)
+      let cleanedData = cleanData(forecast)
       setCoordinates(coordinates)
       setForecast(cleanedData)
     } catch (error) {
-      setErrorCode(error.message)
+      setErrorCode(Number(error.message))
     }
   };
 
@@ -41,33 +43,35 @@ export const App = () => {
     fetchAndCleanData()
   }, [])
 
-  const getForecast = async (thresholds) => {
-    let suitableHours = await determineSuitableHours(
-      thresholds,
-      forecast,
-      coordinates.timezone
-    )
-    let notice = craftNotice(suitableHours, coordinates.timezone)
-    setSuitableHours(suitableHours)
-    setNotice(notice)
+  const getForecast = async (thresholds: Thresholds) => {
+    if (coordinates) {
+      let suitableHours = await determineSuitableHours(
+        thresholds,
+        forecast,
+        coordinates.time_zone.name
+      )
+      let notice = craftNotice(suitableHours, coordinates.time_zone.name)
+      setNotice(notice)
+      setSuitableHours(suitableHours)
+    }
   };
 
   const clearSelected = () => {
-    setErrorCode('')
+    setErrorCode(0)
   }
 
-  const addToCalendar = (hourObject) => {
+  const addToCalendar = (hourObject: CleanedHour) => {
     let suitable = suitableHours
     let thatOne = suitable.indexOf(hourObject)
-    if (calendar.includes(hourObject)) {
-      let currentCalendar = calendar
-      let ind = currentCalendar.indexOf(hourObject)
-      currentCalendar.splice(ind, 1)
+    if (schedule.includes(hourObject)) {
+      let currentSchedule = schedule
+      let ind = currentSchedule.indexOf(hourObject)
+      currentSchedule.splice(ind, 1)
       suitable[thatOne].inCalendar = false
-      setCalendar([...currentCalendar])
+      setSchedule([...currentSchedule])
     } else {
       suitable[thatOne].inCalendar = true
-      setCalendar([...calendar, hourObject])
+      setSchedule([...schedule, hourObject])
     }
     setSuitableHours([...suitable])
   }
@@ -101,7 +105,10 @@ export const App = () => {
             }/>
 
             <Route exact path='/calendar' render={() =>
-              <Calendar calendar={calendar} addToCalendar={addToCalendar} />
+              <Calendar
+                calendar={schedule}
+                addToCalendar={addToCalendar}
+              />
             }/>
 
             <Route exact path='/404' render={() =>

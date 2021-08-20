@@ -6,27 +6,22 @@ export const cleanData = (forecast: Weather) => {
   let preciptObjects = getProbabilityOfPrecipitation(forecast)
 
   return tempObjects.map(currentTempObj => {
-    let matchingWindObj = windObjects.find(currentWindObj => {
-      if (currentWindObj.month === currentTempObj.month && 
-        currentWindObj.day === currentTempObj.day && 
-        currentWindObj.hour === currentTempObj.hour
-      ) {
-        return currentWindObj
-      }
-    })
-    let matchingPreciptObj = preciptObjects.find(currentPreciptObj => {
-      if (currentPreciptObj.month === currentTempObj.month && 
-        currentPreciptObj.day === currentTempObj.day && 
-        currentPreciptObj.hour === currentTempObj.hour
-      ) {
-        return currentPreciptObj
-      }
-    })
+
+    let matchingWindObj = windObjects.find(currentWindObj =>
+      currentWindObj.month === currentTempObj.month && 
+      currentWindObj.day === currentTempObj.day && 
+      currentWindObj.hour === currentTempObj.hour)
+
+    let matchingPreciptObj = preciptObjects.find(currentPreciptObj =>
+      currentPreciptObj.month === currentTempObj.month && 
+      currentPreciptObj.day === currentTempObj.day && 
+      currentPreciptObj.hour === currentTempObj.hour)
+      
     if (matchingWindObj) {
       currentTempObj.windSpeed = matchingWindObj.windSpeed
     }
     if (matchingPreciptObj) {
-      currentTempObj.probabilityOfPrecipitation = matchingPreciptObj.precipProb
+      currentTempObj.precipProb = matchingPreciptObj.precipProb
     }
     return currentTempObj
   })
@@ -55,7 +50,9 @@ const getTemperature = (forecast: Weather) => {
         day: thisDay, 
         hour: thisHour,
         inCalendar: false,
-        temperature: ((currentValueObject.value * (9 / 5)) + 32) 
+        temperature: ((currentValueObject.value * (9 / 5)) + 32),
+        windSpeed: 0,
+        precipProb: 0
       }
       newArray.push(weatherObj)
     }
@@ -84,8 +81,10 @@ const getWindSpeed = (forecast: Weather) => {
       let weatherObj = { 
         month: thisMonth, 
         day: thisDay, 
-        hour: thisHour, 
-        windSpeed: Math.round(currentValueObject.value / 1.609344) 
+        hour: thisHour,
+        temperature: 0,
+        windSpeed: Math.round(currentValueObject.value / 1.609344),
+        precipProb: 0
       }
       newArray.push(weatherObj)
     }
@@ -114,7 +113,9 @@ const getProbabilityOfPrecipitation = (forecast: Weather) => {
       let weatherObj = { 
         month: thisMonth, 
         day: thisDay, 
-        hour: thisHour, 
+        hour: thisHour,
+        temperature: 0,
+        windSpeed: 0,
         precipProb: currentValueObject.value 
       }
       newArray.push(weatherObj)
