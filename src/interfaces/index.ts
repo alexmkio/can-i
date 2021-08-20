@@ -22,13 +22,13 @@ export interface Thresholds {
 }
 
 export interface CleanedHour {
-  month:                      number;
-  day:                        number;
-  hour:                       number;
-  inCalendar:                 boolean;
-  temperature:                number;
-  windSpeed:                  number;
-  probabilityOfPrecipitation: number;
+  month:       number;
+  day:         number;
+  hour:        number;
+  inCalendar:  boolean;
+  temperature: number;
+  windSpeed:   number;
+  precipProb:  number;
 }
 
 export interface Notice {
