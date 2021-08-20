@@ -32,7 +32,7 @@ export const HourCard: React.FC<HourProps> = ({ hour, addToCalendar }) => {
         <dd>{hour.windSpeed} mph</dd>
 
         <dt>Probability of Precipitation:</dt>
-        <dd>{hour.probabilityOfPrecipitation}%</dd>
+        <dd>{hour.precipProb}%</dd>
       </dl>
     </article>
   )
