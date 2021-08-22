@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import { Search } from '../search/Search';
@@ -84,9 +84,6 @@ export const App = () => {
         </Link>
       </header>
       <main>
-        {errorCode &&
-          <Error errorCode={errorCode} clearSelected={clearSelected} />
-        }
         {!errorCode && (
           <Switch>
             <Route exact path='/' render={() =>
@@ -118,6 +115,9 @@ export const App = () => {
             <Redirect to='/404' />
           </Switch>
         )}
+        {errorCode === 0 &&
+          <Error errorCode={errorCode} clearSelected={clearSelected} />
+        }
       </main>
     </>
   );
