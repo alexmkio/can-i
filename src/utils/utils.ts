@@ -8,9 +8,11 @@ export const determineSuitableHours = (thresholds: Thresholds, cleanedData: Clea
       currentHourObj.temperature <= thresholds.temperature.high && 
       currentHourObj.temperature >= thresholds.temperature.low && 
       currentHourObj.windSpeed <= thresholds.windSpeed && 
-      currentHourObj.probabilityOfPrecipitation <= thresholds.probOfPrecip
+      currentHourObj.precipProb <= thresholds.probOfPrecip
     ) {
       return currentHourObj
+    } else {
+      return false
     }
   })
 };
