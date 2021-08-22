@@ -27,7 +27,7 @@ interface Properties {
   gridId:                           string;
   gridX:                            string;
   gridY:                            string;
-  temperature:                      ApparentTemperature;
+  temperature:                      Threshold;
   dewpoint:                         ApparentTemperature;
   maxTemperature:                   ApparentTemperature;
   minTemperature:                   ApparentTemperature;
@@ -37,11 +37,11 @@ interface Properties {
   windChill:                        ApparentTemperature;
   skyCover:                         ApparentTemperature;
   windDirection:                    ApparentTemperature;
-  windSpeed:                        ApparentTemperature;
+  windSpeed:                        Threshold;
   windGust:                         ApparentTemperature;
   weather:                          AtmosphericDispersionIndex;
   hazards:                          AtmosphericDispersionIndex;
-  probabilityOfPrecipitation:       ApparentTemperature;
+  probabilityOfPrecipitation:       Threshold;
   quantitativePrecipitation:        ApparentTemperature;
   iceAccumulation:                  ApparentTemperature;
   snowfallAmount:                   ApparentTemperature;
@@ -84,6 +84,16 @@ interface Properties {
   lowVisibilityOccurrenceRiskIndex: AtmosphericDispersionIndex;
   stability:                        AtmosphericDispersionIndex;
   redFlagThreatIndex:               AtmosphericDispersionIndex;
+}
+
+interface Threshold {
+  uom:    string;
+  values: ThresholdValues[];
+}
+
+export interface ThresholdValues {
+  validTime: string;
+  value:     number;
 }
 
 interface ApparentTemperature {
