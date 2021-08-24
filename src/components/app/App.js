@@ -81,7 +81,7 @@ export const App = () => {
         </Link>
       </header>
       <main>
-        {errorCode &&
+        {errorCode !== 0 &&
           <Error errorCode={errorCode} clearSelected={clearSelected} />
         }
         {!errorCode && (
