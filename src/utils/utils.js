@@ -16,7 +16,7 @@ export const determineSuitableHours = (thresholds, cleanedData, timezone) => {
 export const craftNotice = (suitableHours, timezone) => {
   let currentDateInHours = findUsersDateInHours(timezone)
   let incremented = 0
-  let nextOpportunity
+  let nextOpportunity = 0
   let incrementingCurrentHours = currentDateInHours
 
   suitableHours.every(hourObject => {
