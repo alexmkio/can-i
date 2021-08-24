@@ -4,22 +4,19 @@ export const cleanData = (forecast) => {
   let preciptObjects = getProbabilityOfPrecipitation(forecast)
 
   return tempObjects.map(currentTempObj => {
-    let matchingWindObj = windObjects.find(currentWindObj => {
-      if (currentWindObj.month === currentTempObj.month && 
-        currentWindObj.day === currentTempObj.day && 
-        currentWindObj.hour === currentTempObj.hour
-      ) {
-        return currentWindObj
-      }
-    })
-    let matchingPreciptObj = preciptObjects.find(currentPreciptObj => {
-      if (currentPreciptObj.month === currentTempObj.month && 
-        currentPreciptObj.day === currentTempObj.day && 
-        currentPreciptObj.hour === currentTempObj.hour
-      ) {
-        return currentPreciptObj
-      }
-    })
+    let matchingWindObj = windObjects.find(currentWindObj =>
+      currentWindObj.month === currentTempObj.month && 
+      currentWindObj.day === currentTempObj.day && 
+      currentWindObj.hour === currentTempObj.hour
+    )
+
+    let matchingPreciptObj = preciptObjects.find(currentPreciptObj =>
+      currentPreciptObj.month === currentTempObj.month && 
+      currentPreciptObj.day === currentTempObj.day && 
+      currentPreciptObj.hour === currentTempObj.hour
+    )
+
+    currentTempObj.inCalendar = false
     if (matchingWindObj) {
       currentTempObj.windSpeed = matchingWindObj.windSpeed
     }
@@ -52,7 +49,6 @@ const getTemperature = (forecast) => {
         month: thisMonth, 
         day: thisDay, 
         hour: thisHour,
-        inCalendar: false,
         temperature: ((currentValueObject.value * (9 / 5)) + 32) 
       }
       newArray.push(weatherObj)
