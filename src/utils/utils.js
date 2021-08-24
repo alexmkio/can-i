@@ -9,6 +9,8 @@ export const determineSuitableHours = (thresholds, cleanedData, timezone) => {
       currentHourObj.probabilityOfPrecipitation <= thresholds.probOfPrecip
     ) {
       return currentHourObj
+    } else {
+      return false
     }
   })
 };
