@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
+import React from 'react';
+import { CalendarProps } from '../../interfaces/index';
 import { HourCard } from "../hourCard/HourCard"
 
-export const Calendar = ({ calendar, addToCalendar }) => {
+export const Calendar: React.FC<CalendarProps> = ({ calendar, addToCalendar }) => {
   let hourCards = calendar.map(hour => {
     return (
       <HourCard
@@ -23,9 +24,4 @@ export const Calendar = ({ calendar, addToCalendar }) => {
       </section>
     </section>
   )
-};
-
-Calendar.propTypes = {
-  calendar: PropTypes.arrayOf(PropTypes.object).isRequired,
-  addToCalendar: PropTypes.func.isRequired
 };

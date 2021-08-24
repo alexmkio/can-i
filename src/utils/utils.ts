@@ -1,22 +1,26 @@
-export const determineSuitableHours = (thresholds, cleanedData, timezone) => {
+import { Thresholds, CleanedHour } from "../interfaces/index";
+
+export const determineSuitableHours = (thresholds: Thresholds, cleanedData: CleanedHour[], timezone: string) => {
   let currentDateInHours = findUsersDateInHours(timezone)
   return cleanedData.filter(currentHourObj => {
     let weatherDateInHours = ((currentHourObj.day * 24) + currentHourObj.hour)
     if (weatherDateInHours >= currentDateInHours && 
-      currentHourObj.temperature <= thresholds.temperature.maxTemp && 
-      currentHourObj.temperature >= thresholds.temperature.minTemp && 
+      currentHourObj.temperature <= thresholds.temperature.high && 
+      currentHourObj.temperature >= thresholds.temperature.low && 
       currentHourObj.windSpeed <= thresholds.windSpeed && 
-      currentHourObj.probabilityOfPrecipitation <= thresholds.probOfPrecip
+      currentHourObj.precipProb <= thresholds.probOfPrecip
     ) {
       return currentHourObj
+    } else {
+      return false
     }
   })
 };
 
-export const craftNotice = (suitableHours, timezone) => {
+export const craftNotice = (suitableHours: CleanedHour[], timezone: string) => {
   let currentDateInHours = findUsersDateInHours(timezone)
   let incremented = 0
-  let nextOpportunity
+  let nextOpportunity = 0
   let incrementingCurrentHours = currentDateInHours
 
   suitableHours.every(hourObject => {
@@ -38,7 +42,7 @@ export const craftNotice = (suitableHours, timezone) => {
   }
 };
 
-const findUsersDateInHours = (timezone) => {
+const findUsersDateInHours = (timezone: string) => {
   let splitDate = new Date().toLocaleString("en-US", {timeZone: timezone})
     .split('/').join(':').split(':').join(', ').split(', ').join(' ').split(' ')
   let hour = Number(splitDate[3])
