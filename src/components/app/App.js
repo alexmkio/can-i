@@ -13,7 +13,7 @@ import { determineSuitableHours, craftNotice } from '../../utils/utils'
 export const App = () => {
   const [coordinates, setCoordinates] = useState({});
   const [forecast, setForecast] = useState([]);
-  const [errorCode, setErrorCode] = useState('');
+  const [errorCode, setErrorCode] = useState(0);
   const [suitableHours, setSuitableHours] = useState([]);
   const [notice, setNotice] = useState({});
   const [calendar, setCalendar] = useState([]);
@@ -21,9 +21,10 @@ export const App = () => {
   const fetchAndCleanData = async () => {
     let apiKey = `103a0ac5b110412c9a639e3ab5afd99f`
     let weatherURL = `https://api.weather.gov/points/`
+    let ipParams = `&fields=latitude,longitude,time_zone`
     try {
       let coordinates = await fetchData(
-        `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`
+        `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}${ipParams}`
       )
       let gridPoints = await fetchData(
         `${weatherURL}${coordinates.latitude},${coordinates.longitude}`
@@ -33,7 +34,7 @@ export const App = () => {
       setCoordinates(coordinates)
       setForecast(cleanedData)
     } catch (error) {
-      setErrorCode(error.message)
+      setErrorCode(Number(error.message))
     }
   };
 
@@ -53,7 +54,7 @@ export const App = () => {
   };
 
   const clearSelected = () => {
-    setErrorCode('')
+    setErrorCode(0)
   }
 
   const addToCalendar = (hourObject) => {
@@ -80,7 +81,7 @@ export const App = () => {
         </Link>
       </header>
       <main>
-        {errorCode &&
+        {errorCode !== 0 &&
           <Error errorCode={errorCode} clearSelected={clearSelected} />
         }
         {!errorCode && (
