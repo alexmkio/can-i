@@ -1,6 +1,13 @@
 {
-  "status": "success",
-  "latitude": 66.6666,
-  "longitude": -66.666,
-  "timezone": "America/New_York"
+  "ip": "24.250.145.96",
+  "latitude": "66.6666",
+  "longitude": "-66.666",
+  "time_zone": {
+    "name": "America/New_York",
+    "offset": -5,
+    "current_time": "2021-08-25 22:22:39.898-0400",
+    "current_time_unix": 1629944559.898,
+    "is_dst": true,
+    "dst_savings": 1
+  }
 }

@@ -55,8 +55,8 @@ describe('Suitable Hours with hours user flows', () => {
   });
 
   it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {
-    cy.get('select[name="minTemp"]').select('40')
-      .get('select[name="maxTemp"]').select('100')
+    cy.get('select[name="low"]').select('40')
+      .get('select[name="high"]').select('100')
       .get('select[name="wind"]').select('30')
       .get('select[name="precipProbability"]').select('70')
       .get('a[name="submit"]').click()
@@ -71,8 +71,8 @@ describe('Suitable Hours with hours user flows', () => {
   });
 
   it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {
-    cy.get('select[name="minTemp"]').select('40')
-      .get('select[name="maxTemp"]').select('90')
+    cy.get('select[name="low"]').select('40')
+      .get('select[name="high"]').select('90')
       .get('select[name="wind"]').select('30')
       .get('select[name="precipProbability"]').select('70')
       .get('a[name="submit"]').click()
@@ -85,8 +85,8 @@ describe('Suitable Hours with hours user flows', () => {
   });
 
   it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {
-    cy.get('select[name="minTemp"]').select('40')
-      .get('select[name="maxTemp"]').select('100')
+    cy.get('select[name="low"]').select('40')
+      .get('select[name="high"]').select('100')
       .get('select[name="wind"]').select('20')
       .get('select[name="precipProbability"]').select('70')
       .get('a[name="submit"]').click()
@@ -99,8 +99,8 @@ describe('Suitable Hours with hours user flows', () => {
   });
 
   it('Given certain thresholds/upcoming weather should see certain "good" hours', () => {
-    cy.get('select[name="minTemp"]').select('40')
-      .get('select[name="maxTemp"]').select('100')
+    cy.get('select[name="low"]').select('40')
+      .get('select[name="high"]').select('100')
       .get('select[name="wind"]').select('30')
       .get('select[name="precipProbability"]').select('50')
       .get('a[name="submit"]').click()
@@ -113,8 +113,8 @@ describe('Suitable Hours with hours user flows', () => {
   });
 
   it('Each hour card contains a date, hour, temp, wind speed, & poss of precip', () => {
-    cy.get('select[name="minTemp"]').select('40')
-      .get('select[name="maxTemp"]').select('100')
+    cy.get('select[name="low"]').select('40')
+      .get('select[name="high"]').select('100')
       .get('select[name="wind"]').select('30')
       .get('select[name="precipProbability"]').select('50')
       .get('a[name="submit"]').click()

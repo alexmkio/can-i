@@ -24,18 +24,18 @@ describe('Landing user flows', () => {
   });
 
   it('Should have a form with default values', () => {
-    cy.get('select[name="minTemp"]').should('have.value', '50')
-      .get('select[name="maxTemp"]').should('have.value', '90')
+    cy.get('select[name="low"]').should('have.value', '50')
+      .get('select[name="high"]').should('have.value', '90')
       .get('select[name="wind"]').should('have.value', '10')
       .get('select[name="precipProbability"]').should('have.value', '50')
   });
 
   it('User can choose a different value than the default value', () => {
-    cy.get('select[name="minTemp"]').select('40').should('have.value', '40')
-      .get('select[name="minTemp"]').select('60').should('have.value', '60')
+    cy.get('select[name="low"]').select('40').should('have.value', '40')
+      .get('select[name="low"]').select('60').should('have.value', '60')
 
-      .get('select[name="maxTemp"]').select('80').should('have.value', '80')
-      .get('select[name="maxTemp"]').select('100').should('have.value', '100')
+      .get('select[name="high"]').select('80').should('have.value', '80')
+      .get('select[name="high"]').select('100').should('have.value', '100')
 
       .get('select[name="wind"]').select('5').should('have.value', '5')
       .get('select[name="wind"]').select('20').should('have.value', '20')
@@ -48,8 +48,8 @@ describe('Landing user flows', () => {
   });
 
   it('The user should be taken to the results page after clicking submit', () => {
-    cy.get('a[name="submit"]').click()
-    cy.url().should('include', '/results')  
+    cy.get('form').children('a').click()
+    cy.url().should('include', '/results')
   });
 
   // The following test does currently not work as Cypress does not currently
