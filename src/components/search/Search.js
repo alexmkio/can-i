@@ -4,14 +4,17 @@ import React, { useState } from 'react';
 import './Search.css';
 
 export const Search = ({ getForecast }) => {
-  const [minTemp, setMinTemp] = useState(50);
-  const [maxTemp, setMaxTemp] = useState(90);
+  const [low, setMinTemp] = useState(50);
+  const [high, setMaxTemp] = useState(90);
   const [wind, setWindSpeed] = useState(10);
   const [precipProbability, setProbability] = useState(50);
 
   const onSubmitSearch = () => {
     let thresholds = {
-      temperature: { minTemp, maxTemp },
+      temperature: {
+        low,
+        high
+      },
       windSpeed: wind,
       probOfPrecip: precipProbability
     }
@@ -24,7 +27,7 @@ export const Search = ({ getForecast }) => {
       
       <label>
           Min Temperature: 
-        <select name='minTemp' value={minTemp}
+        <select name='low' value={low}
           onChange={event => setMinTemp(Number(event.target.value))}
         >
           <option value={40}>40</option>
@@ -35,7 +38,7 @@ export const Search = ({ getForecast }) => {
 
       <label>
           Max Temperature: 
-        <select name='maxTemp' value={maxTemp}
+        <select name='high' value={high}
           onChange={event => setMaxTemp(Number(event.target.value))}
         >
           <option value={80}>80</option>

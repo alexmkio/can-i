@@ -3,10 +3,10 @@ export const determineSuitableHours = (thresholds, cleanedData, timezone) => {
   return cleanedData.filter(currentHourObj => {
     let weatherDateInHours = ((currentHourObj.day * 24) + currentHourObj.hour)
     if (weatherDateInHours >= currentDateInHours && 
-      currentHourObj.temperature <= thresholds.temperature.maxTemp && 
-      currentHourObj.temperature >= thresholds.temperature.minTemp && 
+      currentHourObj.temperature <= thresholds.temperature.high && 
+      currentHourObj.temperature >= thresholds.temperature.low && 
       currentHourObj.windSpeed <= thresholds.windSpeed && 
-      currentHourObj.probabilityOfPrecipitation <= thresholds.probOfPrecip
+      currentHourObj.precipProb <= thresholds.probOfPrecip
     ) {
       return currentHourObj
     } else {

@@ -1,7 +1,7 @@
 export const cleanData = (forecast) => {
-  let tempObjects = getTemperature(forecast)
-  let windObjects = getWindSpeed(forecast)
-  let preciptObjects = getProbabilityOfPrecipitation(forecast)
+  let tempObjects = getTemperature(forecast.temperature.values)
+  let windObjects = getWindSpeed(forecast.windSpeed.values)
+  let preciptObjects = getProbabilityOfPrecipitation(forecast.windSpeed.values)
 
   return tempObjects.reduce((newArray, currentTempObj) => {
     let matchingWindObj = windObjects.find((currentWindObj) =>
@@ -27,17 +27,17 @@ export const cleanData = (forecast) => {
     }
     return newArray
   }, [])
-}
+};
 
-const getTemperature = (forecast) => {
-  let tempValues = forecast.properties.temperature.values
+const getTemperature = (tempValues) => {
   return tempValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
     let dateArray = fullArray[0].split('-')
     let month = Number(dateArray[1])
     let day = Number(dateArray[2])
     let hour = Number(fullArray[1].split(':')[0])
-    let hoursThisLasts = fullArray.join().split('H').join().split(',')[2]
+    let hoursThisLasts = Number(fullArray
+      .join().split('H').join().split(',')[2])
 
     for (let i = 0; i < hoursThisLasts; i++) {
       let thisMonth = month
@@ -51,7 +51,7 @@ const getTemperature = (forecast) => {
         month: thisMonth, 
         day: thisDay, 
         hour: thisHour,
-        temperature: ((currentValueObject.value * (9 / 5)) + 32) 
+        temperature: ((currentValueObject.value * (9 / 5)) + 32)
       }
       newArray.push(weatherObj)
     }
@@ -59,15 +59,15 @@ const getTemperature = (forecast) => {
   }, [])
 }
 
-const getWindSpeed = (forecast) => {
-  let windValues = forecast.properties.windSpeed.values
+const getWindSpeed = (windValues) => {
   return windValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
     let dateArray = fullArray[0].split('-')
     let month = Number(dateArray[1])
     let day = Number(dateArray[2])
     let hour = Number(fullArray[1].split(':')[0])
-    let hoursThisLasts = fullArray.join().split('H').join().split(',')[2]
+    let hoursThisLasts = Number(fullArray
+      .join().split('H').join().split(',')[2])
 
     for (let i = 0; i < hoursThisLasts; i++) {
       let thisMonth = month
@@ -80,8 +80,8 @@ const getWindSpeed = (forecast) => {
       let weatherObj = { 
         month: thisMonth, 
         day: thisDay, 
-        hour: thisHour, 
-        windSpeed: Math.round(currentValueObject.value / 1.609344) 
+        hour: thisHour,
+        windSpeed: Math.round(currentValueObject.value / 1.609344)
       }
       newArray.push(weatherObj)
     }
@@ -89,15 +89,15 @@ const getWindSpeed = (forecast) => {
   }, [])
 }
 
-const getProbabilityOfPrecipitation = (forecast) => {
-  let precipValues = forecast.properties.probabilityOfPrecipitation.values
+const getProbabilityOfPrecipitation = (precipValues) => {
   return precipValues.reduce((newArray, currentValueObject) => {
     let fullArray = currentValueObject.validTime.split('T')
     let dateArray = fullArray[0].split('-')
     let month = Number(dateArray[1])
     let day = Number(dateArray[2])
     let hour = Number(fullArray[1].split(':')[0])
-    let hoursThisLasts = fullArray.join().split('H').join().split(',')[2]
+    let hoursThisLasts = Number(fullArray
+      .join().split('H').join().split(',')[2])
 
     for (let i = 0; i < hoursThisLasts; i++) {
       let thisMonth = month
@@ -110,7 +110,7 @@ const getProbabilityOfPrecipitation = (forecast) => {
       let weatherObj = { 
         month: thisMonth, 
         day: thisDay, 
-        hour: thisHour, 
+        hour: thisHour,
         precipProb: currentValueObject.value 
       }
       newArray.push(weatherObj)
