@@ -30,7 +30,7 @@ export const App = () => {
         `${weatherURL}${coordinates.latitude},${coordinates.longitude}`
       )
       let forecast = await fetchData(gridPoints.properties.forecastGridData)
-      let cleanedData = await cleanData(forecast)
+      let cleanedData = await cleanData(forecast.properties)
       setCoordinates(coordinates)
       setForecast(cleanedData)
     } catch (error) {
@@ -46,9 +46,9 @@ export const App = () => {
     let suitableHours = await determineSuitableHours(
       thresholds,
       forecast,
-      coordinates.timezone
+      coordinates.time_zone.name
     )
-    let notice = craftNotice(suitableHours, coordinates.timezone)
+    let notice = craftNotice(suitableHours, coordinates.time_zone.name)
     setSuitableHours(suitableHours)
     setNotice(notice)
   };
