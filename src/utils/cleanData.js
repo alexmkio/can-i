@@ -3,29 +3,31 @@ export const cleanData = (forecast) => {
   let windObjects = getWindSpeed(forecast)
   let preciptObjects = getProbabilityOfPrecipitation(forecast)
 
-  return tempObjects.map(currentTempObj => {
-    let matchingWindObj = windObjects.find(currentWindObj =>
+  return tempObjects.reduce((newArray, currentTempObj) => {
+    let matchingWindObj = windObjects.find((currentWindObj) =>
       currentWindObj.month === currentTempObj.month && 
       currentWindObj.day === currentTempObj.day && 
-      currentWindObj.hour === currentTempObj.hour
-    )
-
-    let matchingPreciptObj = preciptObjects.find(currentPreciptObj =>
+      currentWindObj.hour === currentTempObj.hour)
+    let matchingPreciptObj = preciptObjects.find((currentPreciptObj) =>
       currentPreciptObj.month === currentTempObj.month && 
       currentPreciptObj.day === currentTempObj.day && 
-      currentPreciptObj.hour === currentTempObj.hour
-    )
+      currentPreciptObj.hour === currentTempObj.hour)
 
-    currentTempObj.inCalendar = false
-    if (matchingWindObj) {
-      currentTempObj.windSpeed = matchingWindObj.windSpeed
+    if (matchingWindObj && matchingPreciptObj) {
+      let cleanedHour = {
+        month: currentTempObj.month,
+        day: currentTempObj.day,
+        hour: currentTempObj.hour,
+        inCalendar: false,
+        temperature: currentTempObj.temperature,
+        windSpeed: matchingWindObj.windSpeed,
+        precipProb: matchingPreciptObj.precipProb
+      }
+      newArray.push(cleanedHour)
     }
-    if (matchingPreciptObj) {
-      currentTempObj.probabilityOfPrecipitation = matchingPreciptObj.precipProb
-    }
-    return currentTempObj
-  })
-};
+    return newArray
+  }, [])
+}
 
 const getTemperature = (forecast) => {
   let tempValues = forecast.properties.temperature.values
